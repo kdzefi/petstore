@@ -21,6 +21,7 @@ public class UserApiController implements UserApi {
 
     @Override
     public Optional<ObjectMapper> getObjectMapper() {
+        //just adding something here to print later
         return Optional.ofNullable(objectMapper);
     }
 
