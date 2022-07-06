@@ -39,7 +39,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-07-06T00:54:07.323637100-04:00[America/New_York]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-07-06T01:03:43.254582400-04:00[America/New_York]")
 @Validated
 public interface UserApi {
 
@@ -79,7 +79,7 @@ public interface UserApi {
         @ApiResponse(responseCode = "400", description = "Invalid username supplied"),
         
         @ApiResponse(responseCode = "404", description = "User not found") })
-    @RequestMapping(value = "/user/{username}",
+    @RequestMapping(value = "/user/{usernames}",
         method = RequestMethod.DELETE)
     default ResponseEntity<Void> deleteUser(@Parameter(in = ParameterIn.PATH, description = "The name that needs to be deleted", required=true, schema=@Schema()) @PathVariable("username") String username) {
         if(getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
@@ -102,7 +102,32 @@ public interface UserApi {
         if(getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
             if (getAcceptHeader().get().contains("application/json")) {
                 try {
-                    return new ResponseEntity<>(getObjectMapper().get().readValue("{\r\n  \"firstName\" : \"firstName\",\r\n  \"lastName\" : \"lastName\",\r\n  \"password\" : \"password\",\r\n  \"userStatus\" : 6,\r\n  \"phone\" : \"phone\",\r\n  \"id\" : 0,\r\n  \"email\" : \"email\",\r\n  \"username\" : \"username\"\r\n}", User.class), HttpStatus.NOT_IMPLEMENTED);
+                    return new ResponseEntity<>(getObjectMapper().get().readValue("{\r\n  \"password\" : \"password\",\r\n  \"userStatus\" : 6,\r\n  \"phone\" : \"phone\",\r\n  \"firstNames\" : \"firstNames\",\r\n  \"lastNames\" : \"lastNames\",\r\n  \"id\" : 0,\r\n  \"email\" : \"email\",\r\n  \"username\" : \"username\",\r\n  \"relationShipStatus\" : \"relationShipStatus\"\r\n}", User.class), HttpStatus.NOT_IMPLEMENTED);
+                } catch (IOException e) {
+                    log.error("Couldn't serialize response for content type application/json", e);
+                    return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+                }
+            }
+        } else {
+            log.warn("ObjectMapper or HttpServletRequest not configured in default UserApi interface so no example is generated");
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+    }
+
+
+    @Operation(summary = "Get user by user name", description = "", tags={ "user" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "successful operation", content = @Content(mediaType = "application/json", schema = @Schema(implementation = User.class))),
+        
+        @ApiResponse(responseCode = "404", description = "User not found") })
+    @RequestMapping(value = "/user/{usernames}",
+        produces = { "application/json" }, 
+        method = RequestMethod.GET)
+    default ResponseEntity<User> getUserByName(@Parameter(in = ParameterIn.PATH, description = "The name that needs to be fetched. Use user1 for testing. ", required=true, schema=@Schema()) @PathVariable("username") String username) {
+        if(getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
+            if (getAcceptHeader().get().contains("application/json")) {
+                try {
+                    return new ResponseEntity<>(getObjectMapper().get().readValue("{\r\n  \"password\" : \"password\",\r\n  \"userStatus\" : 6,\r\n  \"phone\" : \"phone\",\r\n  \"firstNames\" : \"firstNames\",\r\n  \"lastNames\" : \"lastNames\",\r\n  \"id\" : 0,\r\n  \"email\" : \"email\",\r\n  \"username\" : \"username\",\r\n  \"relationShipStatus\" : \"relationShipStatus\"\r\n}", User.class), HttpStatus.NOT_IMPLEMENTED);
                 } catch (IOException e) {
                     log.error("Couldn't serialize response for content type application/json", e);
                     return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -122,7 +147,7 @@ public interface UserApi {
         @ApiResponse(responseCode = "400", description = "Invalid user supplied"),
         
         @ApiResponse(responseCode = "404", description = "User not found") })
-    @RequestMapping(value = "/user/{username}",
+    @RequestMapping(value = "/user/{usernames}",
         produces = { "application/json" }, 
         consumes = { "*/*" }, 
         method = RequestMethod.PUT)
@@ -130,7 +155,7 @@ public interface UserApi {
         if(getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
             if (getAcceptHeader().get().contains("application/json")) {
                 try {
-                    return new ResponseEntity<>(getObjectMapper().get().readValue("{\r\n  \"firstName\" : \"firstName\",\r\n  \"lastName\" : \"lastName\",\r\n  \"password\" : \"password\",\r\n  \"userStatus\" : 6,\r\n  \"phone\" : \"phone\",\r\n  \"id\" : 0,\r\n  \"email\" : \"email\",\r\n  \"username\" : \"username\"\r\n}", User.class), HttpStatus.NOT_IMPLEMENTED);
+                    return new ResponseEntity<>(getObjectMapper().get().readValue("{\r\n  \"password\" : \"password\",\r\n  \"userStatus\" : 6,\r\n  \"phone\" : \"phone\",\r\n  \"firstNames\" : \"firstNames\",\r\n  \"lastNames\" : \"lastNames\",\r\n  \"id\" : 0,\r\n  \"email\" : \"email\",\r\n  \"username\" : \"username\",\r\n  \"relationShipStatus\" : \"relationShipStatus\"\r\n}", User.class), HttpStatus.NOT_IMPLEMENTED);
                 } catch (IOException e) {
                     log.error("Couldn't serialize response for content type application/json", e);
                     return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

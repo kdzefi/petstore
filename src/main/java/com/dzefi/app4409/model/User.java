@@ -12,21 +12,21 @@ import javax.validation.constraints.*;
  * User
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-07-06T00:54:07.323637100-04:00[America/New_York]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-07-06T01:03:43.254582400-04:00[America/New_York]")
 
 
 public class User   {
   @JsonProperty("id")
-  private Long id = null;
+  private Integer id = null;
 
   @JsonProperty("username")
   private String username = null;
 
-  @JsonProperty("firstName")
-  private String firstName = null;
+  @JsonProperty("firstNames")
+  private String firstNames = null;
 
-  @JsonProperty("lastName")
-  private String lastName = null;
+  @JsonProperty("lastNames")
+  private String lastNames = null;
 
   @JsonProperty("email")
   private String email = null;
@@ -40,7 +40,10 @@ public class User   {
   @JsonProperty("userStatus")
   private Integer userStatus = null;
 
-  public User id(Long id) {
+  @JsonProperty("relationShipStatus")
+  private String relationShipStatus = null;
+
+  public User id(Integer id) {
     this.id = id;
     return this;
   }
@@ -51,11 +54,11 @@ public class User   {
    **/
   @Schema(description = "")
   
-    public Long getId() {
+    public Integer getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -78,42 +81,42 @@ public class User   {
     this.username = username;
   }
 
-  public User firstName(String firstName) {
-    this.firstName = firstName;
+  public User firstNames(String firstNames) {
+    this.firstNames = firstNames;
     return this;
   }
 
   /**
-   * Get firstName
-   * @return firstName
+   * Get firstNames
+   * @return firstNames
    **/
   @Schema(description = "")
   
-    public String getFirstName() {
-    return firstName;
+    public String getFirstNames() {
+    return firstNames;
   }
 
-  public void setFirstName(String firstName) {
-    this.firstName = firstName;
+  public void setFirstNames(String firstNames) {
+    this.firstNames = firstNames;
   }
 
-  public User lastName(String lastName) {
-    this.lastName = lastName;
+  public User lastNames(String lastNames) {
+    this.lastNames = lastNames;
     return this;
   }
 
   /**
-   * Get lastName
-   * @return lastName
+   * Get lastNames
+   * @return lastNames
    **/
   @Schema(description = "")
   
-    public String getLastName() {
-    return lastName;
+    public String getLastNames() {
+    return lastNames;
   }
 
-  public void setLastName(String lastName) {
-    this.lastName = lastName;
+  public void setLastNames(String lastNames) {
+    this.lastNames = lastNames;
   }
 
   public User email(String email) {
@@ -192,6 +195,25 @@ public class User   {
     this.userStatus = userStatus;
   }
 
+  public User relationShipStatus(String relationShipStatus) {
+    this.relationShipStatus = relationShipStatus;
+    return this;
+  }
+
+  /**
+   * Get relationShipStatus
+   * @return relationShipStatus
+   **/
+  @Schema(description = "")
+  
+    public String getRelationShipStatus() {
+    return relationShipStatus;
+  }
+
+  public void setRelationShipStatus(String relationShipStatus) {
+    this.relationShipStatus = relationShipStatus;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -204,17 +226,18 @@ public class User   {
     User user = (User) o;
     return Objects.equals(this.id, user.id) &&
         Objects.equals(this.username, user.username) &&
-        Objects.equals(this.firstName, user.firstName) &&
-        Objects.equals(this.lastName, user.lastName) &&
+        Objects.equals(this.firstNames, user.firstNames) &&
+        Objects.equals(this.lastNames, user.lastNames) &&
         Objects.equals(this.email, user.email) &&
         Objects.equals(this.password, user.password) &&
         Objects.equals(this.phone, user.phone) &&
-        Objects.equals(this.userStatus, user.userStatus);
+        Objects.equals(this.userStatus, user.userStatus) &&
+        Objects.equals(this.relationShipStatus, user.relationShipStatus);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, username, firstName, lastName, email, password, phone, userStatus);
+    return Objects.hash(id, username, firstNames, lastNames, email, password, phone, userStatus, relationShipStatus);
   }
 
   @Override
@@ -224,12 +247,13 @@ public class User   {
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
-    sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
-    sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
+    sb.append("    firstNames: ").append(toIndentedString(firstNames)).append("\n");
+    sb.append("    lastNames: ").append(toIndentedString(lastNames)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
     sb.append("    userStatus: ").append(toIndentedString(userStatus)).append("\n");
+    sb.append("    relationShipStatus: ").append(toIndentedString(relationShipStatus)).append("\n");
     sb.append("}");
     return sb.toString();
   }
