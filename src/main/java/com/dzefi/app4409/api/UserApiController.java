@@ -20,6 +20,9 @@ public class UserApiController implements UserApi {
 
     @Override
     public Optional<ObjectMapper> getObjectMapper() {
+
+        //let's try this again
+
         return Optional.ofNullable(objectMapper);
     }
 
